@@ -30,7 +30,7 @@ $(document).ready(function() {
     // Join the names with a comma
     let displayText = amenityNames.join(', ');
 
-    // Check if the text exceeds the maximum number of characters
+    // Check if the text exceeds the maximum number of characters.
     if (displayText.length > maxCharacters) {
       // Trim the text to the maximum number of characters and add "..."
       displayText = displayText.substring(0, maxCharacters - 3) + '...';
