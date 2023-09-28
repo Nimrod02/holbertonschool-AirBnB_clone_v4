@@ -18,11 +18,13 @@ $(document).ready(function() {
     // Function to update the API status
     function updateApiStatus() {
       // Make an HTTP GET request to the API status endpoint
-      $.get('http://0.0.0.0:5001/api/v1/status/', function(data) {
+      $.get('http://127.0.0.1:5001/api/v1/statu/', function(data) {
+        console.log(data); // Affiche la réponse de l'API dans la console
         // Check if the status is "OK"
         if (data.status === "OK") {
           // Add the class "available" to the div#api_status
           $('#api_status').addClass('available');
+          console.log(data); // Affiche la réponse de l'API dans la console
         } else {
           // Remove the class "available" from the div#api_status
           $('#api_status').removeClass('available');
@@ -30,6 +32,12 @@ $(document).ready(function() {
       });
     }
   
+    // Initial update of API status
+    updateApiStatus();
+
+    // Set an interval to periodically update the API status (e.g., every 10 seconds)
+    setInterval(updateApiStatus, 10000); // Update every 10 seconds
+
     // Define an object to store selected amenities
     const selectedAmenities = {};
   
@@ -57,7 +65,6 @@ $(document).ready(function() {
     // Initial update of the amenities list when the page loads
     updateAmenitiesList(selectedAmenities);
   
-    // Set an interval to periodically update the API status (e.g., every 10 seconds)
-    setInterval(updateApiStatus, 10000); // Update every 10 seconds
+
   });
   
