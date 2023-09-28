@@ -19,7 +19,7 @@ $(document).ready(function() {
     function updateApiStatus() {
       // Make an HTTP GET request to the API status endpoint
       $.get('http://127.0.0.1:5001/api/v1/statu/', function(data) {
-        console.log(data); // Affiche la réponse de l'API dans la console
+        console.log(data); // Affiche la réponse de l'API dans la console.
         // Check if the status is "OK"
         if (data.status === "OK") {
           // Add the class "available" to the div#api_status
