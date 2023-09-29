@@ -66,7 +66,7 @@ $(document).ready(function() {
 
     // Listen for clicks on the button tag
     $('button').click(function() {
-        // Make a POST request to places_search with the list of selected amenities
+    // Make a POST request to places_search with the list of selected amenities
         $.ajax({
             type: 'POST',
             url: 'http://0.0.0.0:5001/api/v1/places_search',
@@ -75,7 +75,20 @@ $(document).ready(function() {
             success: function(data) {
                 // Process the response data and update the UI as needed
                 console.log(data);
-                // Implement your code to update the UI with search results here
+
+                // Clear previous search results
+                $('#searchResults').empty();
+
+                // Iterate through the results and append them to the list
+                for (const result of data.results) {
+                    // Create a list item for each result
+                    const listItem = $('<li></li>').text(result.name);
+
+                    // You can add more information from the result object as needed
+
+                    // Append the list item to the list of results
+                    $('#searchResults').append(listItem);
+                }
             },
             error: function(error) {
                 console.error('Error:', error);
